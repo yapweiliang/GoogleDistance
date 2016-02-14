@@ -15,7 +15,7 @@ assign("API_key", "", envir = cacheEnv) # no key specified by default
 #' @describeIn getGoogleDistance Assign and remember your API Key
 #' @param key \code{string} containing the API key
 #' @export
-#' @examples setGoogleAPIKey(key = readLines("H:/path/to/MyGoogleAPIKey.txt", warn = FALSE))
+#' @examples \dontrun{setGoogleAPIKey(key = readLines("H:/path/to/MyGoogleAPIKey.txt", warn = FALSE))}
 setGoogleAPIKey <- function(key) {
   assign("API_key", key, envir = cacheEnv)
 }
@@ -56,7 +56,7 @@ getGoogleAPIKey <- function() {
 #' @examples
 #' getGoogleDistance("DT1 2JY", "BA21 4AT")
 #' setGoogleAPIKey("silly-key")
-#' getGoogleDistance("BA21 4AT", "DT1 2JY") # generates error with the silly-key
+#' \dontrun{getGoogleDistance("BA21 4AT", "DT1 2JY") # generates error with the silly-key}
 #'
 getGoogleDistance <- function(origin, destination,
                               is.latlong = FALSE,
