@@ -1,7 +1,7 @@
 Package: GoogleDistance
 Type: Package
 Title: Query the Google Distance Matrix API
-Version: 0.1
+Version: 0.11
 Date: 2016-02-08
 Author: Wei Liang Yap
 Maintainer: Wei Liang Yap <yapweiliang@yahoo.co.uk>
