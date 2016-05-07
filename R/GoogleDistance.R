@@ -50,7 +50,7 @@ getGoogleAPIKey <- function() {
 #' @param delay between queries (seconds).  The Standard Usage Limits allow 100 elements per 10 seconds (= 0.1s)
 #' @param user_confirm If postcode provided does not match postcode returned, prompt user to accept, or automatically bail out?
 #' @param traffic_model Google accepts \code{"best_guess"}, \code{"pessimistic"}, or, \code{"optimistic"}
-#' @param departure_time Leave blank to choose next Monday 8am (generates warning), or specify date string e.g. "2016-12-25 22:00"
+#' @param departure_time Leave as \code{NULL} to choose next Monday 8am (generates warning), or specify date string e.g. "2016-12-25 22:00"
 #' @param not_found_result Return value if results not found, e.g. \code{-1}, or \code{NA}
 #'
 #' @return \code{getGoogleDistance} returns a list containing distance, duration and traffic_duration (numeric), or \code{not_found_result} value if not found.
@@ -70,7 +70,7 @@ getGoogleDistance <- function(origin, destination,
                               delay = 0.1,
                               user_confirm = TRUE,
                               traffic_model = "pessimistic",
-                              departure_time = "",
+                              departure_time = NULL,
                               not_found_result = -1) {
 
   # http://stackoverflow.com/questions/16863018/getting-driving-distance-between-two-points-lat-lon-using-r-and-google-map-ap
@@ -90,7 +90,7 @@ getGoogleDistance <- function(origin, destination,
     stop(paste0("'", traffic_model, "' is an unrecognised traffic_model."))
   }
 
-  if (is.null(departure_time) || (departure_time == "")) {
+  if (is.null(departure_time)) {
     # if no date/time specified, choose next Monday 8am
     d <- as.POSIXct(cut.Date(Sys.Date() + 7,"weeks")) + lubridate::hours(8) # get next Monday 8am
     if (show_warnings) warning( paste0("No departure_time specified, therefore using next Monday 8am (", d, ")"))
